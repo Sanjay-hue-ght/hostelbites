@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HostelBites — Hostel snacks, delivered</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="announcement"><span id="shopStatus">Shop is open</span> <span class="announcement-sub">• Orders delivered to your room in minutes</span></div>
+  <header>
+    <a class="brand" href="#"><span class="brand-mark">HB</span><span>HOSTEL<span>BITES</span></span></a>
+    <div class="search">⌕ <input id="searchInput" placeholder="Search chips, biscuits, chocolates..." /></div>
+    <button class="admin-btn" id="adminOpen" title="Admin dashboard">Admin</button>
+    <button class="cart-btn" id="cartOpen">Bag <span id="cartCount">0</span></button>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="hero-copy"><p class="eyebrow">YOUR CAMPUS SNACK STATION</p><h1>Good snacks.<br><em>Great moods.</em></h1><p>Late-night cravings, movie marathons and study breaks — delivered straight to your hostel room.</p><button class="primary" onclick="document.querySelector('#products').scrollIntoView({behavior:'smooth'})">Explore snacks <b>→</b></button></div>
+      <div class="hero-photo"><div class="snack-illustration"><span class="pack pack-green">CRUNCH<br><i>MASALA</i></span><span class="pack pack-orange">SPICY<br><i>CHIPS</i></span><span class="pack pack-purple">CHOCO<br><i>BITES</i></span><span class="packet-shadow"></span></div><div class="hero-sticker">Free room<br>delivery</div></div>
+    </section>
+    <section class="categories"><button data-cat="All" class="active">All snacks</button><button data-cat="Chips">Chips & namkeen</button><button data-cat="Biscuits">Biscuits</button><button data-cat="Chocolate">Chocolates</button></section>
+    <section class="section-head"><div><p class="eyebrow">PICK YOUR FAVOURITES</p><h2>What are you craving?</h2></div><p id="productCount"></p></section>
+    <section id="products" class="product-grid"></section>
+  </main>
+  <footer><div class="brand"><span class="brand-mark">HB</span><span>HOSTEL<span>BITES</span></span></div><p>Made for hostel life. © 2026 HostelBites<br><strong>Created & followed by Fly Company</strong></p><p>Contact: <a href="tel:8939009198">8939009198</a> · <a href="tel:8122881704">8122881704</a><br><a href="mailto:sanovaoffical09@gmail.com">sanovaoffical09@gmail.com</a></p></footer>
+
+  <aside class="drawer" id="cartDrawer"><div class="drawer-head"><h2>Your bag</h2><button class="close">×</button></div><div id="cartItems" class="cart-items"></div><div class="cart-total"><span>Total</span><b id="cartTotal">₹0</b></div><button class="primary checkout" id="checkout">Place order →</button></aside>
+  <div class="overlay" id="overlay"></div>
+  <dialog id="orderDialog"><button class="dialog-close">×</button><p class="eyebrow">ONE LAST STEP</p><h2>Where should we deliver?</h2><form id="orderForm"><label>Your name<input required name="name" placeholder="e.g. Arjun Kumar" /></label><label>Phone number<input required name="phone" pattern="[0-9]{10}" placeholder="10-digit mobile number" /></label><label>Hostel / room number<input required name="room" placeholder="e.g. Block B, Room 214" /></label><button class="primary" type="submit">Confirm my order →</button></form></dialog>
+  <dialog id="adminDialog" class="login"><button class="dialog-close">×</button><p class="eyebrow">HOSTELBITES STAFF ONLY</p><h2>Admin access</h2><p>Only the two store administrators can manage products, stock and sales.</p><form id="loginForm"><label>Admin mobile number<input name="adminPhone" placeholder="Enter authorised mobile" inputmode="numeric" required /></label><label>Passcode<input name="password" type="password" placeholder="Enter passcode" required /></label><button class="primary">Enter dashboard →</button></form><small>Demo credentials: 8939009198 / hostelbites</small></dialog>
+  <section id="dashboard" class="dashboard hidden"><div class="dash-nav"><div class="brand"><span class="brand-mark">HB</span><span>HOSTEL<span>BITES</span></span></div><span>Admin control centre</span><button class="text-btn" id="logout">Log out</button></div><div class="dash-content"><div class="dash-title"><div><p class="eyebrow">PRIVATE ADMIN AREA</p><h1>Good evening, Admin.</h1></div><label class="toggle-label">Shop <input type="checkbox" id="shopToggle"><span class="toggle"></span></label></div><div class="stats" id="stats"></div><div class="admin-grid"><section class="panel wide"><div class="panel-title"><h2>Weekly sales</h2><span>This week</span></div><div id="weeklySales" class="weekly-sales"></div></section><section class="panel"><div class="panel-title"><h2>Quick actions</h2></div><button class="admin-action" id="addProduct">Add a product</button><a class="admin-action whatsapp" href="https://wa.me/918939009198" target="_blank">Open WhatsApp orders</a><button class="admin-action" id="exportSales">Export sales history</button></section><section class="panel wide"><div class="panel-title"><h2>Inventory</h2><span>Manage price & stock</span></div><div id="inventory"></div></section><section class="panel wide"><div class="panel-title"><h2>Recent orders</h2><span id="orderLabel"></span></div><div id="orders"></div></section></div></div></section>
+  <dialog id="productDialog"><button class="dialog-close">×</button><p class="eyebrow">INVENTORY</p><h2 id="productDialogTitle">Add product</h2><form id="productForm"><input type="hidden" name="id"><label>Name<input name="name" required></label><label>Category<select name="category"><option>Chips</option><option>Biscuits</option><option>Chocolate</option></select></label><label>Price (₹)<input name="price" type="number" min="1" required></label><label>Stock quantity<input name="stock" type="number" min="0" required></label><label>Product image URL <input name="image" type="url" placeholder="https://example.com/snack-photo.jpg"></label><button class="primary">Save product</button></form></dialog>
+  <dialog id="orderEditDialog"><button class="dialog-close">×</button><p class="eyebrow">ORDER MANAGEMENT</p><h2>Update order</h2><form id="orderEditForm"><input type="hidden" name="id"><label>Student name<input name="name" required></label><label>Phone number<input name="phone" required></label><label>Room number<input name="room" required></label><label>Order status<select name="status"><option>NEW</option><option>PREPARING</option><option>OUT FOR DELIVERY</option><option>DELIVERED</option><option>CANCELLED</option></select></label><button class="primary">Update order</button></form></dialog>
+  <div id="toast" class="toast"></div><a class="whatsapp-float" href="https://wa.me/918939009198?text=Hi%20HostelBites%2C%20I%20need%20help%20with%20my%20order" target="_blank"><span>WhatsApp us</span></a>
+  <script src="app.js"></script>
+</body>
+</html>
