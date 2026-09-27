@@ -1,3 +1,26 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+
+import {
+    getFirestore,
+    collection,
+    getDocs,
+    getDoc,
+    doc,
+    setDoc,
+    deleteDoc
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyCxH-CpLuqXyuJkBtVo5atnguXiHOv38",
+    authDomain: "hostelbites-c98ad.firebaseapp.com",
+    projectId: "hostelbites-c98ad",
+    storageBucket: "hostelbites-c98ad.firebasestorage.app",
+    messagingSenderId: "774397700078",
+    appId: "1:774397700078:web:02acf87df8b631bb9cd0ff"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 const defaultProducts = [
  {id:1,name:'Green Masala Chips',category:'Chips',price:20,stock:18,image:'https://images.unsplash.com/photo-1566478989037-eec170784d0b?auto=format&fit=crop&w=700&q=85',note:'Classic crunchy masala'},
  {id:2,name:'Orange Crunch Chips',category:'Chips',price:20,stock:12,image:'https://images.unsplash.com/photo-1621447504864-d8686e12698c?auto=format&fit=crop&w=700&q=85',note:'Tangy tomato flavour'},
