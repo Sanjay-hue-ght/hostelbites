@@ -1244,7 +1244,7 @@ $('#loginForm').onsubmit =
       &&
 
       d.password ===
-        'hostelbites'
+        '575468'
 
     ) {
 
